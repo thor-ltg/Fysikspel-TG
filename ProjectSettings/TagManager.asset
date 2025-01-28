@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - ParrotText
+  - GameUI
+  - EnemyText
   layers:
   - Default
   - TransparentFX

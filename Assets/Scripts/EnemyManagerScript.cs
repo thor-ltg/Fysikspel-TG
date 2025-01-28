@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +9,13 @@ public class EnemyManagerScript : MonoBehaviour
     public float WinDelay = 2;
     bool HasAlreadyWon;
     List<GameObject> enemies = new List<GameObject>();
+    GameUIScript GameUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        GameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUIScript>();
+        GameUI.SetEnemiesLeft(enemies.Count());
     }
 
     // Update is called once per frame
@@ -22,6 +26,8 @@ public class EnemyManagerScript : MonoBehaviour
             if (item == null)
             {
                 enemies.Remove(item);
+                GameUI.SetEnemiesLeft(enemies.Count());
+
             }
         }
         if (enemies.Count == 0 && !HasAlreadyWon)
