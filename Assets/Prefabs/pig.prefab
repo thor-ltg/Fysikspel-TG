@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1083440964828534234}
   - component: {fileID: 2785444271453895126}
   - component: {fileID: 6005113720744551529}
+  - component: {fileID: 8609078962486893924}
   m_Layer: 0
   m_Name: pig
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,3 +163,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &8609078962486893924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208772521974919370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafaef6da6b026f4882d2f5869351446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
