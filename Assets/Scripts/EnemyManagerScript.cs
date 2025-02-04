@@ -26,8 +26,6 @@ public class EnemyManagerScript : MonoBehaviour
             if (item == null)
             {
                 enemies.Remove(item);
-                GameUI.SetEnemiesLeft(enemies.Count());
-
             }
         }
         if (enemies.Count == 0 && !HasAlreadyWon)
@@ -35,10 +33,12 @@ public class EnemyManagerScript : MonoBehaviour
             Invoke("ReturnToLevelSelect", WinDelay);
             HasAlreadyWon = true;
         }
+        GameUI.SetEnemiesLeft(enemies.Count());
     }
     void ReturnToLevelSelect()
     {
         HasAlreadyWon = false;
+        Utility.LevelClearData[SceneManager.GetActiveScene().name] = "Cleared";
         SceneManager.LoadScene("Level Select");
     }
 }

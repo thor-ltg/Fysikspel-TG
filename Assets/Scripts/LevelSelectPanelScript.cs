@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelectPanelScript : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class LevelSelectPanelScript : MonoBehaviour
         for (int i = 1; i <= NumberOfButtons; i++)
         {
             GameObject NewButton = Instantiate(Button, transform);
-            NewButton.GetComponent<ChangeSceneScript>().newLevel = $"Level {i}";
             NewButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Level {i}";
+            if (Utility.LevelClearData.ContainsKey($"Level {i}") && Utility.LevelClearData[$"Level {i}"] == "Cleared")
+            {
+                NewButton.GetComponent<Image>().color = Color.green;
+            }
+            NewButton.GetComponent<ChangeSceneScript>().newLevel = $"Level {i}";
         }
     }
 

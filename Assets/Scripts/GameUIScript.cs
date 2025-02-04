@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameUIScript : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class GameUIScript : MonoBehaviour
     GameObject EnemiesLeft;
     TextMeshProUGUI EnemiesLeftTMP;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         ParrotsLeft = GameObject.FindGameObjectWithTag("ParrotText");       
         ParrotsLeftTMP = ParrotsLeft.GetComponent<TextMeshProUGUI>();
@@ -28,5 +30,9 @@ public class GameUIScript : MonoBehaviour
     public void SetEnemiesLeft(int NumberOfEnemies)
     {
         EnemiesLeftTMP.text = $"Enemies Left: {NumberOfEnemies}";
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

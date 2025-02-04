@@ -14,9 +14,7 @@ public class ParrotSpawnerScript : MonoBehaviour
     void Start()
     {
         GameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUIScript>();
-        GameUI.SetParrotsLeft(shots.Length);
-        spriteRenderer = transform.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = shots[NextShot].GetComponent<SpriteRenderer>().sprite;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -33,24 +31,31 @@ public class ParrotSpawnerScript : MonoBehaviour
             {
                 ThrowVelocity = ThrowVelocity.normalized * maxSpeed;
             }
-
             GameObject Newparrot = Instantiate(shots[NextShot], transform.position, Quaternion.identity);
             NextShot++;
             Rigidbody2D rb = Newparrot.GetComponent<Rigidbody2D>();
             rb.linearVelocity = ThrowVelocity;
-            GameUI.SetParrotsLeft(shots.Length - NextShot);
             spriteRenderer.sprite = shots[NextShot].GetComponent<SpriteRenderer>().sprite;
+            spriteRenderer.color = shots[NextShot].GetComponent<SpriteRenderer>().color;
+            GameUI.SetParrotsLeft(shots.Length - NextShot);
         }
         if (IsDragging)
         {
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             MousePos.z = transform.position.z;
             Vector2 DistanceFromMouse = (transform.position - MousePos);
-            spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude*0.1f)+1, (DistanceFromMouse.sqrMagnitude*0.1f)+1, (DistanceFromMouse.sqrMagnitude*0.1f)+1, 0.5f);
+           spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), 0.5f) + shots[NextShot].GetComponent<SpriteRenderer>().color;
         }
-        else
+        if (NextShot == 0 && !IsDragging)
+        {
+            spriteRenderer.sprite = shots[NextShot].GetComponent<SpriteRenderer>().sprite;
+            spriteRenderer.color = shots[NextShot].GetComponent<SpriteRenderer>().color;
+            GameUI.SetParrotsLeft(shots.Length);
+        }
+        else if (!IsDragging && NextShot == shots.Length)
         {
             spriteRenderer.color = Color.white;
+            GameUI.SetParrotsLeft(0);
         }
     }
     private void OnMouseDown()
