@@ -8,6 +8,7 @@ TagManager:
   - ParrotText
   - GameUI
   - EnemyText
+  - Arrow
   layers:
   - Default
   - TransparentFX

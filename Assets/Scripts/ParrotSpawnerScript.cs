@@ -1,5 +1,7 @@
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ParrotSpawnerScript : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class ParrotSpawnerScript : MonoBehaviour
     public float throwStrength;
     bool IsDragging = false;
     public float maxSpeed;
+    public GameObject Arrow;
     GameUIScript GameUI;
     SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +25,7 @@ public class ParrotSpawnerScript : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && IsDragging && NextShot <= shots.Length)
         {
+            Destroy(GameObject.FindGameObjectWithTag("Arrow"));
             IsDragging = false;
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             MousePos.z = 0;
@@ -39,12 +43,21 @@ public class ParrotSpawnerScript : MonoBehaviour
             spriteRenderer.color = shots[NextShot].GetComponent<SpriteRenderer>().color;
             GameUI.SetParrotsLeft(shots.Length - NextShot);
         }
-        if (IsDragging)
+        if (IsDragging && shots.Length >= NextShot)
         {
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             MousePos.z = transform.position.z;
-            Vector2 DistanceFromMouse = (transform.position - MousePos);
-           spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), 0.5f) + shots[NextShot].GetComponent<SpriteRenderer>().color;
+            Vector3 DistanceFromMouse = (transform.position - MousePos);
+            GameObject NewArrow;
+            if (GameObject.FindGameObjectWithTag("Arrow") == null)
+            {
+                NewArrow = Instantiate(Arrow, new Vector3(transform.position.x, transform.position.y)+DistanceFromMouse.normalized, Quaternion.identity);
+            }
+            NewArrow = GameObject.FindGameObjectWithTag("Arrow");
+            NewArrow.transform.transform.localScale = new Vector3(math.clamp(DistanceFromMouse.sqrMagnitude+5, 5, 20), math.clamp(DistanceFromMouse.sqrMagnitude+5, 5, 20))/10;
+            NewArrow.transform.position = transform.position + DistanceFromMouse.normalized * NewArrow.transform.transform.localScale.x*2;
+            NewArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0,  Mathf.Atan2(DistanceFromMouse.y, DistanceFromMouse.x)*Mathf.Rad2Deg-90));
+            spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), 0.5f) + shots[NextShot].GetComponent<SpriteRenderer>().color;
         }
         if (NextShot == 0 && !IsDragging)
         {
