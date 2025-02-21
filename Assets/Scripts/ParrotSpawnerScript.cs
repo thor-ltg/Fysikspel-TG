@@ -49,7 +49,8 @@ public class ParrotSpawnerScript : MonoBehaviour
             MousePos.z = transform.position.z;
             Vector3 DistanceFromMouse = (transform.position - MousePos);
             GameObject NewArrow;
-            if (GameObject.FindGameObjectWithTag("Arrow") == null)
+            spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude * 0.015f), (DistanceFromMouse.sqrMagnitude * 0.015f), (DistanceFromMouse.sqrMagnitude * 0.015f), 0.5f) + shots[NextShot].GetComponent<SpriteRenderer>().color;
+            if (GameObject.FindGameObjectWithTag("Arrow") == null && Utility.ShowArrow)
             {
                 NewArrow = Instantiate(Arrow, new Vector3(transform.position.x, transform.position.y)+DistanceFromMouse.normalized, Quaternion.identity);
             }
@@ -57,7 +58,6 @@ public class ParrotSpawnerScript : MonoBehaviour
             NewArrow.transform.transform.localScale = new Vector3(math.clamp(DistanceFromMouse.sqrMagnitude+5, 5, 20), math.clamp(DistanceFromMouse.sqrMagnitude+5, 5, 20))/10;
             NewArrow.transform.position = transform.position + DistanceFromMouse.normalized * NewArrow.transform.transform.localScale.x*2;
             NewArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0,  Mathf.Atan2(DistanceFromMouse.y, DistanceFromMouse.x)*Mathf.Rad2Deg-90));
-            spriteRenderer.color = new Color((DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), (DistanceFromMouse.sqrMagnitude*0.015f), 0.5f) + shots[NextShot].GetComponent<SpriteRenderer>().color;
         }
         if (NextShot == 0 && !IsDragging)
         {

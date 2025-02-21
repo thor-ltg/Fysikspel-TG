@@ -35,4 +35,8 @@ public class GameUIScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void ToggleArrow()
+    {
+        Utility.ShowArrow = !Utility.ShowArrow;
+    }
 }
