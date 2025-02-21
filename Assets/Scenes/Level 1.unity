@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &46133584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8141137346587881502, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+  m_PrefabInstance: {fileID: 83234739559388306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e03946c7f288104bbdeb92361ac2046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &929692370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,6 +495,34 @@ PrefabInstance:
     - target: {fileID: 199977708740450678, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 46133584}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameUIScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 368350435654630691, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1751860301688033398, guid: 3b3a57b0571051d49af17685818be9f2, type: 3}
       propertyPath: m_Pivot.x
@@ -934,7 +973,7 @@ PrefabInstance:
     - target: {fileID: 5694787285824795219, guid: b424a6b7b845d53438ef688dee346df6, type: 3}
       propertyPath: 'shots.Array.data[1]'
       value: 
-      objectReference: {fileID: 6976766349005616248, guid: 2e1fbd682f0abd349b6ff02d372aeb63, type: 3}
+      objectReference: {fileID: 4506952053239929897, guid: dc7414bc34bbe324b91ae8eecf1ed144, type: 3}
     - target: {fileID: 5694787285824795219, guid: b424a6b7b845d53438ef688dee346df6, type: 3}
       propertyPath: 'shots.Array.data[2]'
       value: 
