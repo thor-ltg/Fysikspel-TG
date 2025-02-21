@@ -265,4 +265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childsr: {fileID: 2173374870139559938}
   hitsuntildestruction: 4
-  hitsuntilbreak: 2
+  hitsuntilcrack: 0
+  timebetweenchecks: 3
+  maxacceleration: 10
