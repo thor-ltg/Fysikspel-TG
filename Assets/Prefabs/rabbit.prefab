@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 424167286613276982}
   m_Layer: 0
   m_Name: rabbit
-  m_TagString: Untagged
+  m_TagString: Parrot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4699c9b294718d4a926d7edb879a5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rabbitshootspeed: 20
