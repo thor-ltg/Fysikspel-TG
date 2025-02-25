@@ -16,6 +16,7 @@ public class EnemyManagerScript : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
         GameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUIScript>();
         GameUI.SetEnemiesLeft(enemies.Count());
+        Utility.StarsTotal = GameObject.FindGameObjectsWithTag("Star").Length;
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class EnemyManagerScript : MonoBehaviour
         }
         if (enemies.Count == 0 && !HasAlreadyWon)
         {
+            GameUI.ShowEndScreen();
             Invoke("ReturnToLevelSelect", WinDelay);
             HasAlreadyWon = true;
         }

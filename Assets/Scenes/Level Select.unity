@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 7403985952401867710, guid: af2a14ae5bb5bd5448c26cb83fb62845, type: 3}
-  NumberOfButtons: 6
+  NumberOfButtons: 8
 --- !u!114 &1811313230
 MonoBehaviour:
   m_ObjectHideFlags: 0
